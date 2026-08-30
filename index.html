@@ -182,19 +182,20 @@
       justify-content: space-between;
       width: 100%;
       max-width: 880px;
-      gap: 12px;
+      gap: 10px;
       background: rgba(18, 18, 22, 0.35);
       backdrop-filter: blur(20px) saturate(180%);
       -webkit-backdrop-filter: blur(20px) saturate(180%);
-      padding: 6px 14px;
+      padding: 5px 12px;
       border-radius: 999px;
       border: 1px solid rgba(255, 255, 255, 0.25);
       box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37), inset 0 1px 1px rgba(255, 255, 255, 0.3);
+      overflow: hidden;
     }
 
     .promo-circle-btn {
-      width: 42px;
-      height: 42px;
+      width: 38px;
+      height: 38px;
       background-color: #ffffff;
       border-radius: 50%;
       display: grid;
@@ -204,7 +205,7 @@
       border: none;
       cursor: pointer;
       color: #000000;
-      font-size: 17px;
+      font-size: 15px;
       box-shadow: 0 0 12px rgba(255,255,255,0.3);
     }
 
@@ -218,27 +219,33 @@
       display: flex;
       align-items: center;
       justify-content: center;
-      gap: 10px;
+      gap: 8px;
       text-decoration: none;
       cursor: pointer;
-      height: 42px;
+      height: 38px;
+      min-width: 0;
+      flex-shrink: 1;
     }
 
     .brand-pixel-text {
       font-family: var(--font-pixel);
-      font-size: 11px;
+      font-size: 10px;
       color: #ffffff;
       letter-spacing: -0.05em;
       line-height: 1;
       display: inline-flex;
       align-items: center;
+      min-width: 0;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
     }
 
     .brand-pixel-text span { color: var(--red); }
 
     .header-logo-space {
-      width: 36px;
-      height: 36px;
+      width: 32px;
+      height: 32px;
       background: transparent;
       border: none;
       border-radius: 50%;
@@ -278,7 +285,17 @@
       background: rgba(255, 255, 255, 0.18);
     }
 
-    .header-actions { display: flex; gap: 8px; }
+    .header-actions { display: flex; gap: 6px; min-width: 0; flex-shrink: 1; }
+
+    .header-actions .sign-in-btn {
+      height: 34px;
+      padding: 0 14px;
+      font-size: 12.5px;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+      min-width: 0;
+    }
 
     .sign-in-btn {
       height: 38px;
@@ -758,6 +775,31 @@
       .headline { font-size: 30px; }
       .toast-container { left: 50%; right: auto; transform: translateX(-50%); bottom: 16px; width: 90%; }
       .toast { justify-content: center; text-align: center; }
+    }
+
+    /* AJUSTE: en celulares la barra (mismo diseño) se hace más compacta
+       (menos alta, menos padding, elementos un poco más pequeños) para
+       que quepa completa. No cambia colores, fuentes, botones ni estructura. */
+    @media (max-width: 600px) {
+      .header-wrapper { padding: 0 8px; }
+      .header { padding: 5px 8px; gap: 6px; }
+      .promo-circle-btn { width: 34px; height: 34px; font-size: 13px; }
+      .header-brand { gap: 5px; height: 34px; }
+      .header-logo-space { width: 28px; height: 28px; }
+      .brand-pixel-text { font-size: 9px; }
+      .header-actions { gap: 5px; }
+      .header-actions .sign-in-btn { height: 30px; padding: 0 10px; font-size: 11px; }
+    }
+
+    @media (max-width: 400px) {
+      .header-wrapper { padding: 0 5px; }
+      .header { padding: 4px 5px; gap: 4px; }
+      .promo-circle-btn { width: 28px; height: 28px; font-size: 11px; }
+      .header-brand { gap: 3px; height: 28px; }
+      .header-logo-space { width: 20px; height: 20px; }
+      .brand-pixel-text { font-size: 7px; }
+      .header-actions { gap: 3px; }
+      .header-actions .sign-in-btn { height: 26px; padding: 0 6px; font-size: 9.5px; }
     }
   </style>
 </head>
